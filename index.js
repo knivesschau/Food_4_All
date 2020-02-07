@@ -1,6 +1,6 @@
 'use strict';
 
-const testKey = "AIzaSyCpKQPDifo-jtSzU9iynsCK3p1gt-TLDQs";
+const testKey = "AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY";
 const foodBankSearch = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json";
 
 function submitFoodBank() {
@@ -12,16 +12,16 @@ function submitFoodBank() {
     });
 }
 
-function covertQuery(parameters) {
+function convertQuery(parameters) {
     const searchData = Object.keys(parameters).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`);
     return searchData.join("&");
 }
 
 function getFoodBank(bankEntry) {
-    const parameters = {
+    const parameters = { 
         input: bankEntry,
-        inputtype: textquery,
-        fields: [formatted_address, geometry, icon,name, permanently_closed, photos, place_id, plus_code, types],
+        inputtype: 'textquery',
+        fields: ['formatted_address', 'geometry', 'icon,name', 'permanently_closed', 'photos', 'place_id', 'plus_code', 'types'],
         key: testKey,
     };
 
@@ -29,19 +29,23 @@ function getFoodBank(bankEntry) {
     const searchQuery = foodBankSearch + '?' + searchString;
     console.log(searchQuery);
 
-    fetch(searchQuery)
+    fetch(searchQuery, {
+        mode: 'no-cors',
+        })
         .then(response => {
             if (response.ok) {
-                return response.json(); 
+                return response.json();
             }
             throw new Error(response.statusText);
             })
         .then(responseJson => showFoodBank(responseJson))
-        .catch(error => alert("Something went wrong. Please try again later."));
+        .catch(error => alert("Something went wrong. Try again later."));
 }
 
 function showFoodBank(responseJson) {
     $("#food-bank-list").empty();
+    $("#food-bank-list").append(`
+    <li><h3>${responseJson.data.name}</h3>`);
     $("#search-results").removeClass("hidden");
 }
 
