@@ -1,12 +1,14 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
     text-align: center;
 }
 
-.hidden {
-    display: none;
-}
-
-ul {
+li {
     list-style-type: none;
 }
 
