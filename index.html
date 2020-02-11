@@ -15,13 +15,13 @@
     <p class="tester">This is currently a API Tester Page for Food 4 All, the app that aims to address food insecurity! This is not the final markup of the app.</p>
     <p>Type in "San Diego Food Bank," and the location should return to you on the map.</p>
     <form id="places-search">
-        <input type="pac-input" class="controls" type="text" placeholder="Search for A Food Bank" aria-label="Food Bank Search Tool">
+        <input id="pac-input" class="controls" type="text" placeholder="Search for A Food Bank" aria-label="Food Bank Search Tool">
     </input>
     </form>
     <section id="map" style="height: 500px; width: 700px">
     </section>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY&callback=initAutocomplete&libraries=places" async defer></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </main>
 </body>
