@@ -14,14 +14,14 @@
 <main class="api-tester">
     <p class="tester">This is currently a API Tester Page for Food 4 All, the app that aims to address food insecurity! This is not the final markup of the app.</p>
     <p>Type in "San Diego Food Bank," and the location should return to you on the map.</p>
-    <form id="food-bank-selector">
-        <span class="food-bank">Food Bank Name:</span><input type="text" id="food-bank" required aria-label="Enter Food Bank Name"></input>
-        <input type="submit" id="submit-button" value="Search" aria-label="Submit Button"></input> 
+    <form id="places-search">
+        <input type="pac-input" class="controls" type="text" placeholder="Search for A Food Bank" aria-label="Food Bank Search Tool">
+    </input>
     </form>
-    <div id="map" style="height: 500px; width: 700px">
-    </div>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY&callback=initMap&libraries=places" async defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+    <section id="map" style="height: 500px; width: 700px">
+    </section>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY&callback=initAutocomplete&libraries=places" async defer></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script> -->
     <script src="index.js"></script>
 </main>
 </body>
