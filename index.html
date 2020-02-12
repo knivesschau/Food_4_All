@@ -14,20 +14,22 @@
 <main class="main-area">
 
     <section class="landing-page" id="landing" aria-live="polite">
-    <h2 id="app-descrip">Welcome to Food 4 All, the app that aims to address food insecurity.<h2>
-    <h3 id="app-guider">What would you like to do?</h3>
-        <div class="home-nav-links">
-            <a id="food-bank" href="#" aria-label="Search for Food Banks Link">Find Food Banks</a>
-            <a id="food-insecurity" href="#" aria-label="What is Food Insecurity Link">What is Food Insecurity?</a>
-        </div>
+        <h2 id="app-descrip">Welcome to Food 4 All, the app that aims to address food insecurity.<h2>
+        <h3 id="app-guider">What would you like to do?</h3>
+            <div class="home-nav-links">
+                <a id="food-bank" href="#" aria-label="Search for Food Banks Link">Find Local Food Banks</a>
+                <a id="food-insecurity" href="#" aria-label="What is Food Insecurity Link">What is Food Insecurity?</a>
+            </div>
     </section> 
 
     <section class="food-bank-page hidden" id="food-bank" aria-live="polite">
-    <form id="places-search">
-        <input id="pac-input" class="controls" type="text" placeholder="Search for A Food Bank" aria-label="Food Bank Search Tool">
-        </input>
-    </form>
-        <div id="map" class="map-placeholder" style="height: 500px; width: 700px"></div>
+        <h3 id="search-title page">Search for a Food Bank</h3>
+        <p id="search-descrip1">You can use this page to look for food banks to donate or volunteer to in your local area or somewhere else in the United States.</p>
+        <p id="search-descrip2">It's easy! Just use the search box in the map below to find a food bank by a personal/business address or city. If you already know the specific name of a food bank, you can also search for it on the map as well. 
+            <input id="pac-input" class="controls" type="text" placeholder="ex. Food Banks near San Diego, CA" aria-label="Food Bank Search Tool">
+            </input>
+        </form>
+            <div id="map" class="map-placeholder" style="height: 500px; width: 700px"></div>
     </section>
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY&callback=initAutocomplete&libraries=places" async defer></script>
