@@ -8,18 +8,28 @@
     <title>Food 4 All</title>
 </head>
 <body>
-    <header class="title" aria-live="polite">
-        <h1>Food 4 All</h1>
+    <header role="banner" class="app-title" aria-live="polite">
+        <h1 id="app-name">Food 4 All</h1>
     </header>
-<main class="api-tester">
-    <p class="tester">This is currently a API Tester Page for Food 4 All, the app that aims to address food insecurity! This is not the final markup of the app.</p>
-    <p>Type in "San Diego Food Bank," and the location should return to you on the map.</p>
+<main class="main-area">
+
+    <section class="landing-page" id="landing" aria-live="polite">
+    <h2 id="app-descrip">Welcome to Food 4 All, the app that aims to address food insecurity.<h2>
+    <h3 id="app-guider">What would you like to do?</h3>
+        <div class="home-nav-links">
+            <a id="food-bank" href="#" aria-label="Search for Food Banks Link">Find Food Banks</a>
+            <a id="food-insecurity" href="#" aria-label="What is Food Insecurity Link">What is Food Insecurity?</a>
+        </div>
+    </section> 
+
+    <section class="food-bank-page hidden" id="food-bank" aria-live="polite">
     <form id="places-search">
         <input id="pac-input" class="controls" type="text" placeholder="Search for A Food Bank" aria-label="Food Bank Search Tool">
-    </input>
+        </input>
     </form>
-    <section id="map" style="height: 500px; width: 700px">
+        <div id="map" class="map-placeholder" style="height: 500px; width: 700px"></div>
     </section>
+
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY&callback=initAutocomplete&libraries=places" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>

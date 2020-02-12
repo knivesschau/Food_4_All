@@ -1,12 +1,21 @@
 'use strict';
 
-//TO-DO: FOLLOW TUTORIAL TO GET API POC TO WORK WITH GOOGLE LIBRARY, THEN SEE WHERE MORE JQUERY CAN BE APPLIED.
-//TO-DO: FOLLOW TUTORIAL FOR API POC AND THEN BREAK UP SO IT LOOKS LESS LIKE SPAGHETTI CODE. PRIORITIZE WHAT TO INITIALIZE.
+//TO-DO: SEE WHERE MORE JQUERY CAN BE APPLIED.
+//TO-DO: BREAK UP CODE SO IT LOOKS LESS LIKE SPAGHETTI CODE. PRIORITIZE WHAT TO INITIALIZE.
 //TO-DO: HOW TO INTEGRATE MORE FETCH? => CORS-ANYWHERE? 
 //TO-DO: FIND WAY TO INTEGRATE SOME JSON MANIPULATION AFTER MAP SEARCH WORKS. 
+//TO-DO: STYLE!
 
 const testKey = "AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY";
 const foodBankSearch = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json";
+
+function navigationListener() {
+  $("#food-bank").on('click', function(event) {
+      $(".food-bank-page").show().removeClass("hidden"); 
+      $(".landing-page").hide(); 
+  //  REMEMBER TO ADD FOOD INSECURITY LISTENER WHEN IT'S BUILT OUT. 
+    })
+}
 
 function initAutocomplete() {
     console.log("ran!");
@@ -71,6 +80,7 @@ function initAutocomplete() {
     });
   }
 
+$(navigationListener);
 
 // OLD CODE BELOW, FETCH DID NOT WORK BECAUSE OF HOW THE API WORKS. NEEDED TO USE SPECIFIC MAPS JS API LIBRARY.
 
