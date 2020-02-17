@@ -24,7 +24,7 @@ function initAutocomplete() {
         maptypeId: 'roadmap'
     });
 
-    let input = document.getElementById('pac-input'); // can maybe do $().val() here??
+    let input = document.getElementById('pac-input'); 
     let searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   
@@ -52,20 +52,11 @@ function initAutocomplete() {
           console.log("Returned place contains no geometry");
           return;
         }
-
-        let icon = {
-          url: places.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25)
-        };
   
         markers.push(new google.maps.Marker({
           map: map,
-          icon: icon,
-          title: place.name,
-          position: place.geometry.location
+          title: places.name,
+          position: place.geometry.location,
         }));
   
         if (place.geometry.viewport) {
@@ -76,6 +67,10 @@ function initAutocomplete() {
       });
 
       map.fitBounds(bounds);
+      });
+
+  google.maps.event.addListener(markers, 'click', function() {
+        markers.info.open(map, marker);
       });
 }
 
