@@ -14,6 +14,8 @@ function navigationListener() {
     })
 }
 
+let markers = [];
+
 function initAutocomplete() {
     console.log("ran!");
 
@@ -31,8 +33,6 @@ function initAutocomplete() {
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(map.getBounds());
     });
-  
-    let markers = [];
 
     searchBox.addListener('places_changed', function() {
       let places = searchBox.getPlaces();
@@ -44,16 +44,16 @@ function initAutocomplete() {
       markers.forEach(function(marker) {
         marker.setMap(null);
       });
-      markers = [];
 
       let bounds = new google.maps.LatLngBounds();
+
       places.forEach(function(place) {
         if (!place.geometry) {
           console.log("Returned place contains no geometry");
           return;
-        }
-  
-        markers.push(new google.maps.Marker({
+        }       
+
+      markers.push(new google.maps.Marker({
           map: map,
           title: places.name,
           position: place.geometry.location,
@@ -64,14 +64,23 @@ function initAutocomplete() {
         } else {
           bounds.extend(place.geometry.location);
         }
-      });
 
-      map.fitBounds(bounds);
+      map.addListener('center_changed', function() {
+        window.setTimeout(function() {
+          map.panTo(marker.getPosition());
+        }, 3000);
+        });
+  
+      marker.addListener('click', function() {
+        map.setZoom(18);
+        map.setCenter(marker.getPOsition());
       });
+  
+  });
+  map.fitBounds(bounds);
+    });
+  }
 
-  google.maps.event.addListener(markers, 'click', function() {
-        markers.info.open(map, marker);
-      });
-}
+
 
 $(navigationListener);
