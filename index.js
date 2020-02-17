@@ -54,6 +54,7 @@ function initAutocomplete() {
         }
 
         let icon = {
+          url: places.icon,
           size: new google.maps.Size(71, 71),
           origin: new google.maps.Point(0, 0),
           anchor: new google.maps.Point(17, 34),
@@ -62,7 +63,6 @@ function initAutocomplete() {
   
         markers.push(new google.maps.Marker({
           map: map,
-          url: place.icon,
           icon: icon,
           title: place.name,
           position: place.geometry.location
@@ -77,29 +77,6 @@ function initAutocomplete() {
 
       map.fitBounds(bounds);
       });
-
-//    let request = {
-//        placeId: input,
-//        fields: ['name', 'formatted_address', 'place_id', 'geometry']
-//      }
-
-//   let infowindow = new google.maps.InfoWindow(); 
-//   let service = new google.maps.places.PlacesService(map);
-
-//   service.getDetails(request, function(place, status) {
-//     if (status === google.maps.places.PlacesServiceStatus.OK) {
-//         let marker = new google.maps.Marker({
-//           map: map,
-//           position: place.geometry.location
-//           });
-//       }
-//     google.maps.event.addListener(marker, 'click', function() {
-//         infowindow.setContent('<div><strong>' + place.name + '</strong><br' + 
-//           'Place ID: ' + place.place_id + '<br>' + 
-//           place.formatted_addresss + '</div>');
-//           infowindow.open(map, this);
-//           });
-//       }); 
 }
 
 $(navigationListener);
