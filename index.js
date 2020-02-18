@@ -73,9 +73,9 @@ function initAutocomplete() {
   
       marker.addListener('click', function() {
         map.setZoom(18);
-        map.setCenter(marker.getPOsition());
+        map.setCenter(marker.getPosition());
       });
-  
+      
   });
   map.fitBounds(bounds);
     });
