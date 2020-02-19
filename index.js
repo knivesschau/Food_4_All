@@ -1,11 +1,5 @@
 'use strict';
 
-//TO-DO: SEE WHERE MORE JQUERY CAN BE APPLIED.
-//TO-DO: BREAK UP CODE SO IT LOOKS LESS LIKE SPAGHETTI CODE. PRIORITIZE WHAT TO INITIALIZE.
-//TO-DO: HOW TO INTEGRATE MORE FETCH? => CORS-ANYWHERE? 
-//TO-DO: FIND WAY TO INTEGRATE SOME JSON MANIPULATION AFTER MAP SEARCH WORKS. 
-//TO-DO: STYLE!
-
 function navigationListener() {
   $("#food-bank").on('click', function(event) {
       $(".food-bank-page").show().removeClass("hidden"); 
@@ -41,46 +35,59 @@ function initAutocomplete() {
         return;
       }
 
+    let service = new google.maps.places.PlacesService(map);
+    let infowindow = new google.maps.InfoWindow();
+
       markers.forEach(function(marker) {
         marker.setMap(null);
       });
+      markers= [];
 
       let bounds = new google.maps.LatLngBounds();
 
       places.forEach(function(place) {
-        if (!place.geometry) {
-          console.log("Returned place contains no geometry");
-          return;
-        }       
-
-      markers.push(new google.maps.Marker({
+        let marker = new google.maps.Marker({
           map: map,
-          title: places.name,
+          title: place.name,
           position: place.geometry.location,
-        }));
-  
-        if (place.geometry.viewport) {
-          bounds.union(place.geometry.viewport);
-        } else {
-          bounds.extend(place.geometry.location);
-        }
-
-      map.addListener('center_changed', function() {
-        window.setTimeout(function() {
-          map.panTo(marker.getPosition());
-        }, 3000);
+          placeId: place.place_id
         });
-  
-      marker.addListener('click', function() {
-        map.setZoom(18);
-        map.setCenter(marker.getPosition());
+
+      markers.push(marker);
+
+      google.maps.event.addListener(marker, 'click', function(evt) {
+          service.getDetails({placeId: this.placeId}, (function(marker) {
+            return function(place, status) {
+              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                infowindow.setContent(
+                  `<div id="info"> 
+                  <span id="name"><b>${place.name}</b></span>
+                  <br>
+                  <span id="address">${place.formatted_address}</span>
+                  <br>
+                  <span id="number">${place.formatted_phone_number}</span>
+                  <br>
+                  <span id="website"><a href=${place.website}>Website</a></span>
+                  <br>
+                  <span id="google-map"><a href=${place.url}>Open in Google Maps</a></span>
+                  </div>`);
+                infowindow.open(map, marker);
+                }
+            }
+          }
+        (marker)));
       });
-      
-  });
+
+      if (place.geometry.viewport) {
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    
+    });
+
   map.fitBounds(bounds);
     });
   }
-
-
 
 $(navigationListener);
