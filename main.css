@@ -4,18 +4,51 @@ body, html {
     padding: 0;
 }
 
+.map-placeholder {
+    margin: auto;
+    height: 500px;
+    width: 650px;
+}
+
+#pac-input {
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 300px;
+    font-size: 16px;
+    padding: 2px;
+}
+
 .hidden {
     display: none;
 }
 
-body {
+.landing-page, .food-bank-page {
+    text-align: center; 
+}
+
+.home-nav-links {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    line-height: 2.0;
+}
+
+.food-insecurity-page {
+    padding: 50px;
+}
+
+h1 {
     text-align: center;
 }
 
-li {
-    list-style-type: none;
+p {
+    font-size: 20px;
 }
 
-p {
-    font-size: 18px;
+footer {
+    font-size: 20px;
+}
+
+#nav-food-insec {
+    justify-content: center;
 }

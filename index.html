@@ -17,8 +17,8 @@
         <h2 id="app-descrip">Welcome to Food 4 All, the app that aims to address food insecurity.<h2>
         <h3 id="app-guider">What would you like to do?</h3>
             <div class="home-nav-links">
-                <a id="food-bank" href="#" aria-label="Search for Food Banks Link">Find Local Food Banks</a>
-                <a id="food-insecurity" href="#" aria-label="What is Food Insecurity Link">What is Food Insecurity?</a>
+                <a id="food-bank-link" href="#" aria-label="Search for Food Banks Link">Find Local Food Banks</a>
+                <a id="food-insecurity-link" href="#" aria-label="What is Food Insecurity Link">What is Food Insecurity?</a>
             </div>
     </section> 
 
@@ -26,11 +26,48 @@
         <h3 id="search-title page">Search for a Food Bank</h3>
         <p id="search-descrip1">You can use this page to look for food banks to donate or volunteer to in your local area or somewhere else in the United States.</p>
         <p id="search-descrip2">It's easy! Just use the search box in the map below to find a food bank by a personal/business address or city. If you already know the specific name of a food bank, you can also search for it on the map as well. 
-            <input id="pac-input" class="controls" type="text" placeholder="ex. Food Banks near San Diego, CA" aria-label="Food Bank Search Tool">
+            <input id="pac-input" class="controls" type="text" placeholder="ex. Food Banks near Los Angeles, CA" aria-label="Food Bank Search Tool">
             </input>
         </form>
-            <div id="map" class="map-placeholder" style="height: 500px; width: 700px"></div>
+            <div id="map" class="map-placeholder" aria-label="Map With Search Box">
+            </div>
+            <br>
+        <footer id="nav-food-bank">
+            <a id="home-page-link1" href="#" aria-label="Back to Home Link">Home Page</a> 
+        </footer>
     </section>
+
+    <section class="food-insecurity-page hidden" id="food-insecurity" aria-live="polite">
+        
+        <h3 id="food-insec1">What is food insecurity?</h3>
+            <p id="answer-1">Food insecurity is a household's inability to provide enough food for every person to live a healthy, active lifestyle. 
+            Children face the biggest risk of living with food insecurity, with detrimental effects to their development, health, and growth. 
+            In the United States, 14.3 million American households were considered food insecure, while 11 million children lived in food insecure households.
+            Most alarmingly, studies have shown that the average American family is just one "bad month" away from plunging into food insecurity.</p>
+
+            <p id="answer-2"> There is not one underlying cause to food insecurity, making it difficult to address and combat the issue of hunger. Several 
+                factors that contribute to this long-standing issue are: health complications, geographical location, inconsistent access to healthy food/grocery stores, layoffs, fixed incomes, and underemployment.
+            </p>
+
+        <h3 id="food-insec2">How can I help?</h3>
+            <p id="answer-3">Start by utilizing this app! The purpose of Food 4 All is to raise awareness around food insecurity and connect users to local food banks, shelters, and other resources where they can volunteer and 
+                participate in providing food and other items to those in need in their local community.</p>
+
+        <h3 id="food-insec3">What if I'm in need?</h3>
+            <p id="answer-5">If you are currently in need and would like to know more about how to receive Supplemental Nutrition Assistance Program (SNAP) benefits, please refer to the <a id="snap-link2" href="https://www.fns.usda.gov/snap/state-directory">USDA's SNAP Directory of Resources</a> 
+                        to learn how to apply, qualify, and receive assistance in obtaining healthy, nutritious food.</p>
+
+            <p id="answer-4">If you are currently a SNAP participant, you can use <a id="snap-link1" href="https://usda-fns.maps.arcgis.com/apps/webappviewer/index.html?id=e1f3028b217344d78b324193b10375e4">the USDA's SNAP Retailers Web Map</a> to find grocery
+                stores near you that accept your SNAP benefits.</p>
+
+        <p id="acknowledgements"><i><b>Note:</b> All statistics and definitions mentioned in this app come from Feeding America, a non-profit organization in the United States that seeks to end hunger in the United States. 
+            For more information, please go to <a id="feed-am-link" href="https://www.feedingamerica.org/">their official website.</a></i></p>
+    
+    <footer id="nav-food-insec"> 
+        <a id="home-page-link2" href="#" aria-label="Back to Home Link">Home Page</a> 
+    </footer>
+    </section>
+
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBydFcLANTMh9X7_9S-0YpZuy7bPNFAYY&callback=initAutocomplete&libraries=places" async defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>

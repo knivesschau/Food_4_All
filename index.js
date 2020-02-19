@@ -1,11 +1,24 @@
 'use strict';
 
+//navigate through the app with these event listeners. 
 function navigationListener() {
-  $("#food-bank").on('click', function(event) {
+  $("#food-bank-link").on('click', function(event) {
       $(".food-bank-page").show().removeClass("hidden"); 
       $(".landing-page").hide(); 
-  //  REMEMBER TO ADD FOOD INSECURITY LISTENER WHEN IT'S BUILT OUT. 
-    })
+      $(".food-insecurity-page").hide();
+    });
+
+  $("#food-insecurity-link").on('click', function(event) {
+    $(".food-insecurity-page").show().removeClass("hidden"); 
+    $(".landing-page").hide(); 
+    $(".food-bank-page").hide(); 
+  });
+
+  $("#home-page-link1, #home-page-link2").on('click', function(event) {
+    $(".landing-page").show(); 
+    $(".food-insecurity-page").hide().addClass("hidden"); 
+    $(".food-bank-page").hide().addClass("hidden"); 
+  });
 }
 
 let markers = [];
@@ -14,9 +27,10 @@ function initAutocomplete() {
     console.log("ran!");
 
     let map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 32.714286, lng: -117.155577},
+        center: {lat: 34.0522, lng: -118.2437},
         scrollwheel: false,
         zoom: 12,
+        gestureHandling: 'auto',
         maptypeId: 'roadmap'
     });
 
@@ -36,7 +50,7 @@ function initAutocomplete() {
       }
 
     let service = new google.maps.places.PlacesService(map);
-    let infowindow = new google.maps.InfoWindow();
+    let infowindow = new google.maps.InfoWindow();  
 
       markers.forEach(function(marker) {
         marker.setMap(null);
@@ -55,7 +69,7 @@ function initAutocomplete() {
 
       markers.push(marker);
 
-      google.maps.event.addListener(marker, 'click', function(evt) {
+      google.maps.event.addListener(marker, 'click', function(event) {
           service.getDetails({placeId: this.placeId}, (function(marker) {
             return function(place, status) {
               if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -64,8 +78,6 @@ function initAutocomplete() {
                   <span id="name"><b>${place.name}</b></span>
                   <br>
                   <span id="address">${place.formatted_address}</span>
-                  <br>
-                  <span id="number">${place.formatted_phone_number}</span>
                   <br>
                   <span id="website"><a href=${place.website}>Website</a></span>
                   <br>
@@ -85,7 +97,6 @@ function initAutocomplete() {
       }
     
     });
-
   map.fitBounds(bounds);
     });
   }
