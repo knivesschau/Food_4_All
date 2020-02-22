@@ -92,18 +92,18 @@ function displaySnapStores(responseJson) {
 
 
 
-//initialize map on SNAP grocery page
-// function initMap() {
-//     console.log("ran!");
+// initialize map on SNAP grocery page
+function initMap() {
+    console.log("ran!");
 
-//     let map = new google.maps.Map(document.getElementById('map'), {
-//         center: {lat: 34.0522, lng: -118.2437},
-//         scrollwheel: false,
-//         zoom: 12,
-//         gestureHandling: 'auto',
-//         maptypeId: 'roadmap'
-//     });
-// }
+    let map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 34.0522, lng: -118.2437},
+        scrollwheel: false,
+        zoom: 12,
+        gestureHandling: 'auto',
+        maptypeId: 'roadmap'
+    });
+}
 
 function initializeApp() {
   navigationListener(); 
