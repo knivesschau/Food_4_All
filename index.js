@@ -70,11 +70,13 @@ function getSnapStores(userZip) {
 function displaySnapStores(responseJson) {
   console.log(responseJson);
   $(".snap-results").removeClass("hidden");
-  $("#grocery-list").empty(); 
+  $(".snap-results").empty(); 
 
   for(let i = 0; i < responseJson.features.length; i++) {
-      $("#grocery-list").append(
-          `<li>
+      $(".snap-results").append(
+          `
+          <ul id="grocery-list">
+          <li>
           <p>${responseJson.features[i].attributes.Store_Name}</p>
           <p>${responseJson.features[i].attributes.Address}</p>
           
@@ -83,7 +85,8 @@ function displaySnapStores(responseJson) {
           ${responseJson.features[i].attributes.Zip5}</p>
           
           <p>${responseJson.features[i].attributes.Latitude}, ${responseJson.features[i].attributes.Longitude}</p>
-          </li>`)
+          </li>
+          </ul>`)
       };
 }
 
