@@ -2,7 +2,7 @@
 
 const url = `https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/Store_Locations/FeatureServer/0/query`;
 
-//navigate through the app with these event listeners. 
+//navigate through the app with these event listeners
 function navigationListener() {
   $("#food-bank-link").on('click', function(event) {
       $(".food-bank-page").show().removeClass("hidden"); 
@@ -23,7 +23,15 @@ function navigationListener() {
   });
 }
 
-//captures user ZIP code value on form.
+//convert search parameters from the SNAP API into URI components
+function getQuerys(parameters) {
+  const snapData = Object.keys(parameters).map(key => {
+      return `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`
+      })
+  return snapData.join("&");
+}
+
+//captures user ZIP code value on form
 function watchZip() {
   console.log("event handler ran!");
   $(".zip-code-form").on("submit", function(){
@@ -33,9 +41,52 @@ function watchZip() {
   });
 }
 
+//interact with the SNAP API to fetch data for the app 
 function getSnapStores(userZip) {
+  const parameters = {
+    where: `UPPER(Zip5) like '%${userZip}%'`,
+    outFields: "*",
+    outSR: "4326",
+    f: "json"
+  }
 
+  const queryString = getQuerys(parameters); 
+  const searchURL = url + '?' + queryString; 
+
+  fetch(searchURL) 
+      .then(response => {
+          if(response.ok) {
+              return response.json(); 
+          }
+      throw new Error(response.statusText);
+      })
+      .then(responseJson => { 
+          return displaySnapStores(responseJson)
+      })
+      .catch(error => alert("An error occurred. Please try again later.")); 
 }
+
+//displays results client-side in list form.
+function displaySnapStores(responseJson) {
+  console.log(responseJson);
+  $(".snap-results").removeClass("hidden");
+  $("#grocery-list").empty(); 
+
+  for(let i = 0; i < responseJson.features.length; i++) {
+      $("#grocery-list").append(
+          `<li>
+          <p>${responseJson.features[i].attributes.Store_Name}</p>
+          <p>${responseJson.features[i].attributes.Address}</p>
+          
+          <p>${responseJson.features[i].attributes.City}, 
+          ${responseJson.features[i].attributes.State}, 
+          ${responseJson.features[i].attributes.Zip5}</p>
+          
+          <p>${responseJson.features[i].attributes.Latitude}, ${responseJson.features[i].attributes.Longitude}</p>
+          </li>`)
+      };
+}
+
 
 
 //initialize map on SNAP grocery page
