@@ -77,10 +77,10 @@ function displaySnapStores(responseJson) {
           `
           <ul id="grocery-list">
           <li>
-          <p>${responseJson.features[i].attributes.Store_Name}</p>
-          <p>${responseJson.features[i].attributes.Address}</p>
+          <p id="name">${[i+1]}. ${responseJson.features[i].attributes.Store_Name}</p>
+          <p id="address-1">${responseJson.features[i].attributes.Address}</p>
           
-          <p>${responseJson.features[i].attributes.City}, 
+          <p id="address-2">${responseJson.features[i].attributes.City}, 
           ${responseJson.features[i].attributes.State}, 
           ${responseJson.features[i].attributes.Zip5}</p>
           
