@@ -1,5 +1,7 @@
 'use strict';
 
+const url = `https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/Store_Locations/FeatureServer/0/query`;
+
 //navigate through the app with these event listeners. 
 function navigationListener() {
   $("#food-bank-link").on('click', function(event) {
@@ -21,25 +23,45 @@ function navigationListener() {
   });
 }
 
-let markers = [];
-
-function initAutocomplete() {
-    console.log("ran!");
-
-    let map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 34.0522, lng: -118.2437},
-        scrollwheel: false,
-        zoom: 12,
-        gestureHandling: 'auto',
-        maptypeId: 'roadmap'
-    });
+//captures user ZIP code value on form.
+function watchZip() {
+  console.log("event handler ran!");
+  $(".zip-code-form").on("submit", function(){
+      event.preventDefault(); 
+      const userZip = $("#zip-input").val(); 
+      getSnapStores(userZip);
+  });
 }
 
-$(navigationListener);
+function getSnapStores(userZip) {
+
+}
+
+
+//initialize map on SNAP grocery page
+// function initMap() {
+//     console.log("ran!");
+
+//     let map = new google.maps.Map(document.getElementById('map'), {
+//         center: {lat: 34.0522, lng: -118.2437},
+//         scrollwheel: false,
+//         zoom: 12,
+//         gestureHandling: 'auto',
+//         maptypeId: 'roadmap'
+//     });
+// }
+
+function initializeApp() {
+  navigationListener(); 
+  watchZip(); 
+}
+
+$(initializeApp);
 
 
 // OLD CODE FROM FIRST VERSION: 
 
+// let markers = [];
 // let input = document.getElementById('pac-input'); 
 // let searchBox = new google.maps.places.SearchBox(input);
 // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
