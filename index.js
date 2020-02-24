@@ -67,9 +67,9 @@ function getSnapStores(userZip) {
   const searchURL = url + '?' + queryString; 
 
   Promise.all([fetch(searchURL)]) 
-      .then(responses => {
-          if(responses.ok) {
-              return responses.map(function(response){
+      .then(response => {
+          if(response.ok) {
+              return response.map(function(response){
                 return response.json(); 
               })
           }
