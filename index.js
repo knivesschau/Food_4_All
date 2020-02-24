@@ -2,6 +2,19 @@
 
 const url = `https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/Store_Locations/FeatureServer/0/query`;
 
+// initialize map on SNAP grocery page
+function initMap(responseJson) {
+  console.log("ran!");
+
+  let map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 34.0522, lng: -118.2437},
+      scrollwheel: false,
+      zoom: 12,
+      gestureHandling: 'auto',
+      maptypeId: 'roadmap'
+    });
+} 
+
 //navigate through the app with these event listeners
 function navigationListener() {
   $("#food-bank-link").on('click', function(event) {
@@ -38,7 +51,7 @@ function watchZip() {
       event.preventDefault(); 
       const userZip = $("#zip-input").val(); 
       getSnapStores(userZip);
-  });
+    });
 }
 
 //interact with the SNAP API to fetch data for the app 
@@ -63,6 +76,9 @@ function getSnapStores(userZip) {
       .then(responseJson => { 
           return displaySnapStores(responseJson)
       })
+      .then(responseJson => {
+        return getMarkers(responseJson)
+      })
       .catch(error => alert("An error occurred. Please try again later.")); 
 }
 
@@ -72,7 +88,7 @@ function displaySnapStores(responseJson) {
   $(".snap-results").removeClass("hidden");
   $(".snap-results").empty(); 
 
-  for(let i = 0; i < responseJson.features.length; i++) {
+  for (let i = 0; i < responseJson.features.length; i++) {
       $(".snap-results").append(
           `
           <ul id="grocery-list">
@@ -90,19 +106,34 @@ function displaySnapStores(responseJson) {
       };
 }
 
+function getMarkers(responseJson) {
+    let bounds = new google.maps.LatLngBounds(); 
 
+    for (let i = 0; i < responseJson.features.length; i++) {
+      let coordinates = new google.maps.LatLng(responseJson[i].features.Latitude, responseJson[i].features.Longitude);
+      let marker = new google.maps.Marker({
+          position: coordinates,
+          map: map
+      });
 
-// initialize map on SNAP grocery page
-function initMap() {
-    console.log("ran!");
+    bounds.extend(coordinates)
+    google.maps.event.addListener(marker, 'click', function(marker, i) {
+        return function() {
+          infowindow.setContent(`
+            <h4>${responseJson.features[i].attributes.Store_Name}</h4>
+            <p>${responseJson.features[i].attributes.Address}</p>
 
-    let map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 34.0522, lng: -118.2437},
-        scrollwheel: false,
-        zoom: 12,
-        gestureHandling: 'auto',
-        maptypeId: 'roadmap'
-    });
+            <p>${responseJson.features[i].attributes.City}, 
+            ${responseJson.features[i].attributes.State}, 
+            ${responseJson.features[i].attributes.Zip5}</p>`);
+          infowindow.open(map, marker);
+        }
+      })
+        (marker, i);
+    }
+  map.fitBounds(bounds);
+
+  let infowindow = new google.maps.InfoWindow();
 }
 
 function initializeApp() {
@@ -111,7 +142,6 @@ function initializeApp() {
 }
 
 $(initializeApp);
-
 
 // OLD CODE FROM FIRST VERSION: 
 
@@ -126,7 +156,6 @@ $(initializeApp);
 
 // searchBox.addListener('places_changed', function() {
 //   let places = searchBox.getPlaces();
-
 //   if (places.length == 0) {
 //     return;
 //   }
