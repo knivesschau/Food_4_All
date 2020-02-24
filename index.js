@@ -66,18 +66,20 @@ function getSnapStores(userZip) {
   const queryString = getQuerys(parameters); 
   const searchURL = url + '?' + queryString; 
 
-  fetch(searchURL) 
-      .then(response => {
-          if(response.ok) {
-              return response.json(); 
+  Promise.all([fetch(searchURL)]) 
+      .then(responses => {
+          if(responses.ok) {
+              return responses.map(function(response){
+                return response.json(); 
+              })
           }
       throw new Error(response.statusText);
       })
       .then(responseJson => { 
-          return displaySnapStores(responseJson)
+          return displaySnapStores(responseJson);
       })
       .then(responseJson => {
-        return getMarkers(responseJson)
+        return getMarkers(responseJson);
       })
       .catch(error => alert("An error occurred. Please try again later.")); 
 }
@@ -110,7 +112,7 @@ function getMarkers(responseJson) {
     let bounds = new google.maps.LatLngBounds(); 
 
     for (let i = 0; i < responseJson.features.length; i++) {
-      let coordinates = new google.maps.LatLng(responseJson[i].features.Latitude, responseJson[i].features.Longitude);
+      let coordinates = new google.maps.LatLng(`${responseJson[i].features.Latitude}, ${responseJson[i].features.Longitude}`);
       let marker = new google.maps.Marker({
           position: coordinates,
           map: map
