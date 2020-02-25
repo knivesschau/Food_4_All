@@ -6,15 +6,15 @@ body, html {
 
 .map-placeholder {
     margin: auto;
-    height: 500px;
-    width: 650px;
+    height: 450px;
+    width: 550px;
 }
 
 .hidden {
     display: none;
 }
 
-.landing-page, .food-bank-page {
+.landing-page, .snap-page {
     text-align: center; 
 }
 
@@ -48,7 +48,7 @@ footer {
 ul {
     list-style-type: none;
     text-align: left;
-    position: relative; 
+    border: 1px solid black;
 }
 
 #address1, #address2 {

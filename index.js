@@ -2,7 +2,7 @@
 
 const url = `https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/Store_Locations/FeatureServer/0/query`;
 
-// initialize map on SNAP grocery page
+// initialize map on SNAP retailer page
 let map;
 
 function initMap() {
@@ -19,7 +19,7 @@ function initMap() {
 //navigate through the app with these event listeners
 function navigationListener() {
   $("#food-bank-link").on('click', function(event) {
-      $(".food-bank-page").show().removeClass("hidden"); 
+      $(".snap-page").show().removeClass("hidden"); 
       $(".landing-page").hide(); 
       $(".food-insecurity-page").hide();
     });
@@ -27,13 +27,13 @@ function navigationListener() {
   $("#food-insecurity-link").on('click', function(event) {
     $(".food-insecurity-page").show().removeClass("hidden"); 
     $(".landing-page").hide(); 
-    $(".food-bank-page").hide(); 
+    $(".snap-page").hide(); 
   });
 
   $("#home-page-link1, #home-page-link2").on('click', function(event) {
     $(".landing-page").show(); 
     $(".food-insecurity-page").hide().addClass("hidden"); 
-    $(".food-bank-page").hide().addClass("hidden"); 
+    $(".snap-page").hide().addClass("hidden"); 
   });
 }
 
