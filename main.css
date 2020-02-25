@@ -4,10 +4,16 @@ body, html {
     padding: 0;
 }
 
-.map-placeholder {
-    margin: auto;
-    height: 450px;
-    width: 550px;
+h1 {
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+footer {
+    font-size: 20px;
 }
 
 .hidden {
@@ -16,6 +22,27 @@ body, html {
 
 .landing-page, .snap-page {
     text-align: center; 
+}
+
+.map-placeholder {
+    margin: auto;
+    height: 300px;
+    width: 350px;
+}
+
+.data-container {
+    padding-top: 30px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.snap-results {
+    height: 400px;
+    width: 300px;
+    overflow-y: auto;
+    border: 1px solid black;
 }
 
 .home-nav-links {
@@ -29,18 +56,6 @@ body, html {
     padding: 50px;
 }
 
-h1 {
-    text-align: center;
-}
-
-p {
-    font-size: 20px;
-}
-
-footer {
-    font-size: 20px;
-}
-
 #nav-food-insec {
     justify-content: center;
 }
@@ -48,9 +63,29 @@ footer {
 ul {
     list-style-type: none;
     text-align: left;
-    border: 1px solid black;
+    border: 1px dotted black;
 }
 
 #address1, #address2 {
     font-size: 14px;
+}
+
+@media only screen and (min-width: 1200px) {
+    .data-container {
+        flex-direction: row-reverse;
+    }
+
+    .map-placeholder {
+        height: 500px;
+        width: 500px;
+    }
+
+    .snap-results {
+        height: 500px;
+        width: 450px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        border: 1px solid black;
+    }
+
 }

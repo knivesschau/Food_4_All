@@ -103,14 +103,16 @@ function displaySnapStores(responseJson) {
           ${responseJson.features[i].attributes.Zip5}</p>
           
           </li>
-          </ul>`)
+          </ul>`)                         
       };
 }
 
+//displays results as markers on the map.
 function getMarkers(responseJson) {
     console.log("getMarkers ran!");
-    console.log(responseJson);
+
     let bounds = new google.maps.LatLngBounds(); 
+    let infowindow = new google.maps.InfoWindow();
 
     for (let i = 0; i < responseJson.features.length; i++) {
       let lat = parseFloat(`${responseJson.features[i].attributes.Latitude}`);
@@ -138,7 +140,6 @@ function getMarkers(responseJson) {
     }
   map.fitBounds(bounds);
 
-  let infowindow = new google.maps.InfoWindow();
 }
 
 //initialize event handlers for navigation and search on load
