@@ -3,13 +3,14 @@
 const url = `https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/Store_Locations/FeatureServer/0/query`;
 
 // initialize map on SNAP grocery page
-function initMap(responseJson) {
-  console.log("ran!");
+let map;
 
-  let map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 34.0522, lng: -118.2437},
+function initMap() {
+  console.log("ran!");
+  map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 37.0902, lng: -95.7129},
       scrollwheel: false,
-      zoom: 12,
+      zoom: 4,
       gestureHandling: 'auto',
       maptypeId: 'roadmap'
     });
@@ -68,20 +69,19 @@ function getSnapStores(userZip) {
 
   Promise.all([fetch(searchURL)]) 
       .then(response => {
-          if(response.ok) {
-              return response.map(function(response){
-                return response.json(); 
-              })
+          if(response[0].ok) {
+                return response[0].json(); 
           }
-      throw new Error(response.statusText);
+      throw new Error(response[0].statusText);
       })
       .then(responseJson => { 
-          return displaySnapStores(responseJson);
-      })
-      .then(responseJson => {
-        return getMarkers(responseJson);
-      })
-      .catch(error => alert("An error occurred. Please try again later.")); 
+        displaySnapStores(responseJson);
+        getMarkers(responseJson);
+          })
+      .catch(error => {
+        console.log(error);
+        alert("An error occurred. Please try again later.")
+        }); 
 }
 
 //displays results client-side in list form.
@@ -109,29 +109,33 @@ function displaySnapStores(responseJson) {
 }
 
 function getMarkers(responseJson) {
+    console.log("getMarkers ran!");
+    console.log(responseJson);
     let bounds = new google.maps.LatLngBounds(); 
 
     for (let i = 0; i < responseJson.features.length; i++) {
-      let coordinates = new google.maps.LatLng(`${responseJson[i].features.Latitude}, ${responseJson[i].features.Longitude}`);
+      let lat = parseFloat(`${responseJson.features[i].attributes.Latitude}`);
+      let long = parseFloat(`${responseJson.features[i].attributes.Longitude}`);
+      let coordinates = new google.maps.LatLng(lat, long);
       let marker = new google.maps.Marker({
           position: coordinates,
           map: map
       });
 
     bounds.extend(coordinates)
-    google.maps.event.addListener(marker, 'click', function(marker, i) {
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(`
-            <h4>${responseJson.features[i].attributes.Store_Name}</h4>
-            <p>${responseJson.features[i].attributes.Address}</p>
+            <h4 id="store name">${responseJson.features[i].attributes.Store_Name}</h4>
+            <p id="address1">${responseJson.features[i].attributes.Address}</p>
 
-            <p>${responseJson.features[i].attributes.City}, 
+            <span id="address2">${responseJson.features[i].attributes.City}, 
             ${responseJson.features[i].attributes.State}, 
-            ${responseJson.features[i].attributes.Zip5}</p>`);
+            ${responseJson.features[i].attributes.Zip5}</span>`);
           infowindow.open(map, marker);
         }
       })
-        (marker, i);
+        (marker, i));
     }
   map.fitBounds(bounds);
 

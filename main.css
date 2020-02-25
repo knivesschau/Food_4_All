@@ -49,3 +49,7 @@ ul {
     list-style-type: none;
     text-align: left;
 }
+
+#address1, #address2 {
+    font-size: 14px;
+}
