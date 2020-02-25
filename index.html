@@ -17,15 +17,15 @@
         <h2 id="app-descrip">Welcome to Food 4 All, the app that aims to address food insecurity.<h2>
         <h3 id="app-guider">What would you like to do?</h3>
             <div class="home-nav-links">
-                <a id="food-bank-link" href="#" aria-label="Search for Food Banks Link">Find SNAP Grocery Stores</a>
+                <a id="food-bank-link" href="#" aria-label="Search for Food Banks Link">Find SNAP Friendly Food Retailers</a>
                 <a id="food-insecurity-link" href="#" aria-label="What is Food Insecurity Link">What is Food Insecurity?</a>
             </div>
     </section> 
 
     <section class="food-bank-page hidden" id="food-bank" aria-live="polite">
-        <h3 id="search-title page">Find SNAP Grocery Stores</h3>
-        <p id="search-descrip1">You can use this page to look for grocery stores that accept SNAP benefits across the United States.</p>
-        <p id="search-descrip2">Type in your ZIP Code, and a list and map of grocery stores will appear.</p>
+        <h3 id="search-title page">Find SNAP-Friendly Food Retailers</h3>
+        <p id="search-descrip1">You can use this page to look for grocery stores and other food retailers that accept SNAP benefits across the United States.</p>
+        <p id="search-descrip2">Type in your ZIP Code, and the map will display food retailers near you.</p>
 
         <form class="zip-code-form">
             <input type="text" id="zip-input" placeholder="ex. 90210" aria-label="SNAP Grocery Search"></input>
@@ -36,7 +36,7 @@
             </div>
             <br>
             
-            <div class="snap-results hidden">
+            <div id="result-list" class="snap-results hidden">
             </div>
 
         <footer id="nav-food-bank">
@@ -46,7 +46,7 @@
 
     <section class="food-insecurity-page hidden" id="food-insecurity" aria-live="polite">
         
-        <h3 id="food-insec1">What is food insecurity?</h3>
+        <h3 id="food-insec1">1. What is food insecurity?</h3>
             <p id="answer-1">Food insecurity is a household's inability to provide enough food for every person to live a healthy, active lifestyle. 
             Children face the biggest risk of living with food insecurity, with detrimental effects to their development, health, and growth. 
             In the United States, 14.3 million American households were considered food insecure, while 11 million children lived in food insecure households.
@@ -56,16 +56,9 @@
                 factors that contribute to this long-standing issue are: health complications, geographical location, inconsistent access to healthy food/grocery stores, layoffs, fixed incomes, and underemployment.
             </p>
 
-        <h3 id="food-insec2">How can I help?</h3>
-            <p id="answer-3">Start by utilizing this app! The purpose of Food 4 All is to raise awareness around food insecurity and connect users to local food banks, shelters, and other resources where they can volunteer and 
-                participate in providing food and other items to those in need in their local community.</p>
-
-        <h3 id="food-insec3">What if I'm in need?</h3>
-            <p id="answer-5">If you are currently in need and would like to know more about how to receive Supplemental Nutrition Assistance Program (SNAP) benefits, please refer to the <a id="snap-link2" href="https://www.fns.usda.gov/snap/state-directory">USDA's SNAP Directory of Resources</a> 
+        <h3 id="food-insec2">2. My family and/or I are in need of food assistance. How can I sign up for SNAP?</h3>
+            <p id="answer-3">If you are currently in need and would like to know more about how to receive Supplemental Nutrition Assistance Program (SNAP) benefits, please refer to the <a id="snap-link2" href="https://www.fns.usda.gov/snap/state-directory">USDA's SNAP Directory of Resources</a> 
                         to learn how to apply, qualify, and receive assistance in obtaining healthy, nutritious food.</p>
-
-            <p id="answer-4">If you are currently a SNAP participant, you can use <a id="snap-link1" href="https://usda-fns.maps.arcgis.com/apps/webappviewer/index.html?id=e1f3028b217344d78b324193b10375e4">the USDA's SNAP Retailers Web Map</a> to find grocery
-                stores near you that accept your SNAP benefits.</p>
 
         <p id="acknowledgements"><i><b>Note:</b> All statistics and definitions mentioned in this app come from Feeding America, a non-profit organization in the United States that seeks to end hunger in the United States. 
             For more information, please go to <a id="feed-am-link" href="https://www.feedingamerica.org/">their official website.</a></i></p>

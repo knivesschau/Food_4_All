@@ -48,6 +48,7 @@ footer {
 ul {
     list-style-type: none;
     text-align: left;
+    position: relative; 
 }
 
 #address1, #address2 {

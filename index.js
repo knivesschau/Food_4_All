@@ -102,7 +102,6 @@ function displaySnapStores(responseJson) {
           ${responseJson.features[i].attributes.State}, 
           ${responseJson.features[i].attributes.Zip5}</p>
           
-          <p>${responseJson.features[i].attributes.Latitude}, ${responseJson.features[i].attributes.Longitude}</p>
           </li>
           </ul>`)
       };
