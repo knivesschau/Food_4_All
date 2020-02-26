@@ -1,7 +1,7 @@
 /* 1 em = 16px!!! */
 
 html {
-    min-height: 100vh;
+    min-height: 100%;
     margin: 0;
     padding: 0;
 }
@@ -10,12 +10,11 @@ html {
     display: none;
 }
 
-/* Mobile-first */
-
+/* Mobile-first, 320px min*/
 body {
     background-image: url("https://user-images.githubusercontent.com/54642928/75304716-e0706b00-583b-11ea-99f7-41c7ef66ce82.jpg");
     background-repeat: no-repeat;
-    background-size: 150% 100%;
+    background-size: 200% 100%;
     background-attachment: fixed;
     background-position: center;
 }
@@ -41,10 +40,25 @@ a {
     margin-top: 3.0em;
     font-size: 2.5rem;
     text-align: center;
+    color: #B92201;
 }
 
-#app-descrip {
+#app-descrip, #app-guider {
     font-size: 1.2rem;
+    color: #26002e;
+}
+
+#snap-link, #food-insecurity-link {
+    text-decoration: none;
+    background-color: rgba(254, 187, 63, .8);
+    color: #ffffff;
+    border: 1px solid white;
+    border-radius: 1em;
+    font-weight: bolder;
+}
+
+#food-insecurity-link {
+    margin-top: .75em;
 }
 
 ul {
@@ -60,6 +74,8 @@ ul {
 .landing-page {
     text-align: center; 
     overflow-y: hidden;
+    position: relative;
+    bottom: 2.0em;
 }
 
 .snap-page {
@@ -119,6 +135,11 @@ ul {
 
 /* iPads and Tablets */
 @media only screen and (min-width: 768px) {
+    
+    body {
+        background-size: 100% 100%;
+    }
+
     .data-container {
         flex-direction: row-reverse;
     }

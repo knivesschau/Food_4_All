@@ -18,7 +18,7 @@ function initMap() {
 
 //navigate through the app with these event listeners
 function navigationListener() {
-  $("#food-bank-link").on('click', function(event) {
+  $("#snap-link").on('click', function(event) {
       $(".snap-page").show().removeClass("hidden"); 
       $(".landing-page").hide(); 
       $(".food-insecurity-page").hide();
