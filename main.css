@@ -15,8 +15,8 @@ html {
 body {
     background-image: url("https://user-images.githubusercontent.com/54642928/75304716-e0706b00-583b-11ea-99f7-41c7ef66ce82.jpg");
     background-repeat: no-repeat;
-    background-size: 275%;
-    background-position: top;
+    background-size: 200% 100%;
+    background-position: center;
 }
 
 h1 {
@@ -44,6 +44,12 @@ a {
 
 #app-descrip {
     font-size: 1.2rem;
+}
+
+ul {
+    list-style-type: none;
+    text-align: left;
+    border: 1px dotted black;
 }
 
 /* footer {
@@ -97,22 +103,13 @@ a {
     justify-content: center;
 }
 
-ul {
-    list-style-type: none;
-    text-align: left;
-    border: 1px dotted black;
-}
-
 #address1, #address2 {
     font-size: 14px;
 }
 
 /* Large smartphones */ 
-@media only screen and (min-width: 375px) {
-    /* body {
-        background-size: 300%;
-    } */
-}
+/* @media only screen and (min-width: 375px) {
+} */
 
 /* iPads and Tablets */
 @media only screen and (min-width: 768px) {
@@ -132,7 +129,6 @@ ul {
         overflow-y: auto;
         border: 1px solid black;
     }
-
 }
 
 /* Desktop
