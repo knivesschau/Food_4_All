@@ -1,24 +1,54 @@
-body, html {
+/* 1 em = 16px!!! */
+
+html {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-h1 {
-    text-align: center;
-}
-
-p {
-    font-size: 20px;
-}
-
-footer {
-    font-size: 20px;
-}
-
 .hidden {
     display: none;
 }
+
+/* Mobile-first */
+
+body {
+    background-image: url("https://user-images.githubusercontent.com/54642928/75304716-e0706b00-583b-11ea-99f7-41c7ef66ce82.jpg");
+    background-repeat: no-repeat;
+    background-size: 275%;
+    background-position: top;
+}
+
+h1 {
+    font-family: 'Pacifico';
+}
+
+h2, h3, h4 {
+    font-family: 'Poppins';
+}
+
+p, a {
+    font-family: 'Open Sans';
+    font-size: 1em;
+}
+
+a {
+    font-size: .90em;
+}
+
+#app-name {
+    margin-top: 3.0em;
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+#app-descrip {
+    font-size: 1.2rem;
+}
+
+/* footer {
+    font-size: 20px;
+} */
 
 .landing-page, .snap-page {
     text-align: center; 
@@ -56,6 +86,13 @@ footer {
     padding: 50px;
 }
 
+#error-msg { 
+    display: none;
+    font-size: 2em;
+    color: darkred;
+    margin-top: 0.5em;
+}
+
 #nav-food-insec {
     justify-content: center;
 }
@@ -70,7 +107,15 @@ ul {
     font-size: 14px;
 }
 
-@media only screen and (min-width: 1200px) {
+/* Large smartphones */ 
+@media only screen and (min-width: 375px) {
+    /* body {
+        background-size: 300%;
+    } */
+}
+
+/* iPads and Tablets */
+@media only screen and (min-width: 768px) {
     .data-container {
         flex-direction: row-reverse;
     }
@@ -89,3 +134,15 @@ ul {
     }
 
 }
+
+/* Desktop
+@media only screen and (min-width: 1000px) {
+
+}
+*/
+
+/* Larger Resolutions (Desktop) 
+@media only screen and (min-width: 1000px) {
+
+}
+*/

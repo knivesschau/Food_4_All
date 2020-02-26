@@ -74,10 +74,15 @@ function getSnapStores(userZip) {
           }
       throw new Error(response[0].statusText);
       })
-      .then(responseJson => { 
-        displaySnapStores(responseJson);
-        getMarkers(responseJson);
-          })
+      .then(responseJson => {
+        if (!responseJson.features.length) {
+          $("#error-msg").show(); 
+          } 
+        else {  
+          displaySnapStores(responseJson);
+          getMarkers(responseJson);
+          }
+      })
       .catch(error => {
         console.log(error);
         alert("An error occurred. Please try again later.")
