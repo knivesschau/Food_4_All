@@ -27,13 +27,29 @@ h2, h3, h4 {
     font-family: 'Poppins';
 }
 
-p, a {
+p, a, span, #name {
     font-family: 'Open Sans';
     font-size: 1em;
 }
 
 a {
     font-size: .90em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    background-color: rgba(60, 146, 82, .8);
+    border: 1px solid black;
+    border-radius: 1em;
+    color: white;
+}
+
+footer {
+    margin-top: .75em;
+    text-align: center;
 }
 
 #app-name {
@@ -49,7 +65,6 @@ a {
 }
 
 #snap-link, #food-insecurity-link {
-    text-decoration: none;
     background-color: rgba(254, 187, 63, .8);
     color: #ffffff;
     border: 1px solid white;
@@ -61,70 +76,15 @@ a {
     margin-top: .75em;
 }
 
-.zip-code-form {
-    display: flex;
-    flex-direction: row;
-}
-
 #zip-input, #submit-button {
     height: 1.5em;
     width: 10em;
     font-size: 1em;
 }
 
-ul {
-    list-style-type: none;
-    text-align: left;
-    border: 1px dotted black;
-}
-
-/* footer {
-    font-size: 20px;
-} */
-
-.landing-page {
-    text-align: center; 
-    overflow-y: hidden;
-    position: relative;
-    bottom: 2.0em;
-}
-
-.snap-page {
-    text-align: center; 
-    position: relative;
-    bottom: 1em;
-}
-
-.map-placeholder {
-    margin: auto;
-    height: 300px;
-    width: 350px;
-}
-
-.data-container {
-    padding-top: 30px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
-.snap-results {
-    height: 400px;
-    width: 300px;
-    overflow-y: auto;
-    border: 1px solid black;
-}
-
-.home-nav-links {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    line-height: 2.0;
-}
-
-.food-insecurity-page {
-    padding: 50px;
+#submit-button {
+    margin-left: .5em;
+    margin-top: .10em;
 }
 
 #error-msg { 
@@ -139,37 +99,140 @@ ul {
 }
 
 #address1, #address2 {
-    font-size: 14px;
+    font-size: .80em;
+    line-height: 1em;
+    padding-bottom: .5em;
 }
 
-/* Large smartphones */ 
-/* @media only screen and (min-width: 375px) {
+#grocery-list {
+    line-height: .80em;
+    padding: 1em;
+}
+
+#store-name {
+    margin-top: .5em;
+    font-size: .85em;
+    text-transform: capitalize;
+}
+
+#home-page-link1, #home-page-link2 {
+    text-align: center;
+}
+
+ #food-insec1, #food-insec2 {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    padding: .5em;
+    font-size: 1em;
+    color: #26002e;
+    font-weight: bolder;
+ }
+
+ #answer-1, #answer-2, #answer-3, #acknowledgements {
+     padding: .5em;
+ }
+
+ #answer-1, #answer-2 {
+    background-color: rgba(254, 187, 63, .8);
+    color: #ffffff;
+    border-radius: 1em;
+ }
+
+.landing-page {
+    text-align: center; 
+    overflow-y: hidden;
+    position: relative;
+    bottom: 2.0em;
+}
+
+.snap-page {
+    text-align: center;
+    position: relative;
+    bottom: 1em;
+}
+
+.zip-code-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.map-placeholder {
+    margin: auto;
+    height: 300px;
+    width: 300px;
+}
+
+.data-container {
+    padding-top: 1.5em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.snap-results {
+    height: 300px;
+    width: 300px;
+    overflow-y: auto;
+}
+
+.home-nav-links {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    line-height: 2.0;
+}
+
+/* .food-insecurity-page {
 } */
+
+/* Medium smartphones */ 
+@media only screen and (min-width: 375px) {
+
+.snap-results {
+    width: 350px;
+}
+
+.map-placeholder {
+    width: 360px;
+}
+
+} 
+
+/* Large smartphones */
+@media only screen and (min-width: 414px) {
+
+.snap-results {
+    padding: 1.5em;
+}
+
+}
 
 /* iPads and Tablets */
 @media only screen and (min-width: 768px) {
     
-    body {
-        background-size: 100% 100%;
-    }
-
-    .data-container {
-        flex-direction: row-reverse;
-    }
-
-    .map-placeholder {
-        height: 500px;
-        width: 500px;
-    }
-
-    .snap-results {
-        height: 500px;
-        width: 450px;
-        overflow-x: hidden;
-        overflow-y: auto;
-        border: 1px solid black;
-    }
+body {
+    background-size: 100% 100%;
 }
+
+.data-container {
+    flex-direction: row-reverse;
+}
+
+.map-placeholder {
+    height: 500px;
+    width: 500px;
+}
+
+.snap-results {
+    height: 500px;
+    width: 450px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+}
+
 
 /* Desktop
 @media only screen and (min-width: 1000px) {

@@ -4,13 +4,14 @@ const url = `https://services1.arcgis.com/RLQu0rK7h4kbsBq5/arcgis/rest/services/
 
 // initialize map on SNAP retailer page
 let map;
+let markers = [];
 
 function initMap() {
   console.log("ran!");
   map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 37.0902, lng: -95.7129},
       scrollwheel: false,
-      zoom: 4,
+      zoom: 3,
       gestureHandling: 'auto',
       maptypeId: 'roadmap'
     });
@@ -19,22 +20,35 @@ function initMap() {
 //navigate through the app with these event listeners
 function navigationListener() {
   $("#snap-link").on('click', function(event) {
-      $(".snap-page").show().removeClass("hidden"); 
+      $(".snap-page").fadeIn().removeClass("hidden"); 
       $(".landing-page").hide(); 
       $(".food-insecurity-page").hide();
     });
 
   $("#food-insecurity-link").on('click', function(event) {
-    $(".food-insecurity-page").show().removeClass("hidden"); 
+    $(".food-insecurity-page").fadeIn().removeClass("hidden"); 
     $(".landing-page").hide(); 
     $(".snap-page").hide(); 
   });
 
   $("#home-page-link1, #home-page-link2").on('click', function(event) {
-    $(".landing-page").show(); 
+    $(".landing-page").fadeIn(); 
     $(".food-insecurity-page").hide().addClass("hidden"); 
     $(".snap-page").hide().addClass("hidden"); 
   });
+}
+
+// show answers to questions on the food insecurity info page.
+function openQuestions() {
+  $("#food-insec1").on('click', function(event) {
+      $("#answer-1").fadeIn().removeClass("hidden");
+      $("#answer-2").fadeOut();
+  })
+
+  $("#food-insec2").on('click', function(event) {
+    $("#answer-2").fadeIn().removeClass("hidden");
+    $("#answer-1").fadeOut();
+  })
 }
 
 //convert search parameters from the SNAP API into URI components
@@ -100,7 +114,7 @@ function displaySnapStores(responseJson) {
           `
           <ul id="grocery-list">
           <li>
-          <p id="name">${[i+1]}. ${responseJson.features[i].attributes.Store_Name}</p>
+          <a id="name">${responseJson.features[i].attributes.Store_Name}</a>
           <p id="address-1">${responseJson.features[i].attributes.Address}</p>
           
           <p id="address-2">${responseJson.features[i].attributes.City}, 
@@ -108,11 +122,11 @@ function displaySnapStores(responseJson) {
           ${responseJson.features[i].attributes.Zip5}</p>
           
           </li>
-          </ul>`)                         
-      };
+          </ul>`)  
+    };
 }
 
-//displays results as markers on the map.
+//displays results as markers on the map wth corresponding info.
 function getMarkers(responseJson) {
     console.log("getMarkers ran!");
 
@@ -120,37 +134,61 @@ function getMarkers(responseJson) {
     let infowindow = new google.maps.InfoWindow();
 
     for (let i = 0; i < responseJson.features.length; i++) {
+      
       let lat = parseFloat(`${responseJson.features[i].attributes.Latitude}`);
       let long = parseFloat(`${responseJson.features[i].attributes.Longitude}`);
       let coordinates = new google.maps.LatLng(lat, long);
+
+      let info = `<h4 id="store-name">${responseJson.features[i].attributes.Store_Name}</h4>
+      <p id="address1">${responseJson.features[i].attributes.Address}</p>
+      <span id="address2">${responseJson.features[i].attributes.City}, 
+      ${responseJson.features[i].attributes.State}, 
+      ${responseJson.features[i].attributes.Zip5}</span>`
+      
       let marker = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
           position: coordinates,
           map: map
       });
-
+    
+    markers.push(marker);
     bounds.extend(coordinates)
+    
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(`
-            <h4 id="store name">${responseJson.features[i].attributes.Store_Name}</h4>
-            <p id="address1">${responseJson.features[i].attributes.Address}</p>
-
-            <span id="address2">${responseJson.features[i].attributes.City}, 
-            ${responseJson.features[i].attributes.State}, 
-            ${responseJson.features[i].attributes.Zip5}</span>`);
+          infowindow.setContent(info);
           infowindow.open(map, marker);
-        }
-      })
-        (marker, i));
-    }
+          }
+    })
+    (marker, i));
+
+    // $("#name").on('click', function(marker) {
+    //     map.setZoom(16);
+    //     google.maps.event.trigger(markers[i], 'click');
+    // });
+  }
   map.fitBounds(bounds);
 
 }
+
+//function to handle text appearance with scrolling on mobile.
+// function scrollContent() {
+//   $(window).scroll(function() {
+//     if (`${this}.scrollTop()` > 0) {
+//       $('').fadeOut();
+//     } 
+//     else {
+//       $('').fadeIn();
+//     }
+//   });
+// }
 
 //initialize event handlers for navigation and search on load
 function initializeApp() {
   navigationListener(); 
   watchZip(); 
+  openQuestions();
+  // scrollContent();
 }
 
 $(initializeApp);
