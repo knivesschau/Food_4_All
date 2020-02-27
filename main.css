@@ -195,6 +195,14 @@ footer {
     width: 360px;
 }
 
+.zip-code-form {
+    justify-content: center;
+}
+
+#app-name {
+    margin-top: 4em;
+}
+
 } 
 
 /* Large smartphones */
@@ -240,10 +248,6 @@ h3 {
     font-size: 2rem;
 }
 
-.zip-code-form {
-    justify-content: center;
-}
-
 .data-container {
     flex-direction: row-reverse;
 }
@@ -263,11 +267,13 @@ h3 {
 }
 
 
-/* Desktop
+/* Desktop */
 @media only screen and (min-width: 1000px) {
-
+    #app-name {
+        margin-top: 2em;
+    }
 }
-*/
+
 
 /* Larger Resolutions (Desktop) 
 @media only screen and (min-width: 1000px) {
