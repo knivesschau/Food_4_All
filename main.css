@@ -29,7 +29,7 @@ h2, h3, h4 {
 
 p, a, span, #name {
     font-family: 'Open Sans';
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 a {
@@ -124,12 +124,12 @@ footer {
     flex-direction: column;
     align-content: space-around;
     padding: .5em;
-    font-size: 1em;
+    font-size: 1rem;
     color: #26002e;
     font-weight: bolder;
  }
 
- #answer-1, #answer-2, #answer-3, #acknowledgements {
+ #answer-1, #answer-2, #acknowledgements {
      padding: .5em;
  }
 
@@ -149,6 +149,7 @@ footer {
 .snap-page {
     text-align: center;
     position: relative;
+    background-size: 200% 100%;
     bottom: 1em;
 }
 
@@ -183,9 +184,6 @@ footer {
     line-height: 2.0;
 }
 
-/* .food-insecurity-page {
-} */
-
 /* Medium smartphones */ 
 @media only screen and (min-width: 375px) {
 
@@ -212,7 +210,38 @@ footer {
 @media only screen and (min-width: 768px) {
     
 body {
-    background-size: 100% 100%;
+    background-size: 110% 100%;
+}
+
+p, #zip-input, #submit-button {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+#app-name {
+    font-size: 4rem;
+    margin-top: 3.5em;
+}
+
+#app-descrip, #app-guider {
+    font-size: 2rem;
+}
+
+#snap-link, #food-insecurity-link {
+    font-size: 2rem; 
+    margin-left: 2.0em;
+    margin-right: 2.0em;
+}
+
+#food-insec1, #food-insec2 {
+    font-size: 2rem;
+}
+
+.zip-code-form {
+    justify-content: center;
 }
 
 .data-container {
@@ -220,8 +249,8 @@ body {
 }
 
 .map-placeholder {
-    height: 500px;
-    width: 500px;
+    height: 465px;
+    width: 700px;
 }
 
 .snap-results {

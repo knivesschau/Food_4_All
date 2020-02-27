@@ -158,6 +158,7 @@ function getMarkers(responseJson) {
         return function() {
           infowindow.setContent(info);
           infowindow.open(map, marker);
+          map.setZoom(15);
           }
     })
     (marker, i));
