@@ -61,6 +61,17 @@ a {
     margin-top: .75em;
 }
 
+.zip-code-form {
+    display: flex;
+    flex-direction: row;
+}
+
+#zip-input, #submit-button {
+    height: 1.5em;
+    width: 10em;
+    font-size: 1em;
+}
+
 ul {
     list-style-type: none;
     text-align: left;
@@ -80,6 +91,8 @@ ul {
 
 .snap-page {
     text-align: center; 
+    position: relative;
+    bottom: 1em;
 }
 
 .map-placeholder {
