@@ -15,6 +15,7 @@ function initMap() {
       gestureHandling: 'auto',
       maptypeId: 'roadmap'
     });
+    
 } 
 
 //navigate through the app with these event listeners
@@ -59,14 +60,17 @@ function getQuerys(parameters) {
   return snapData.join("&");
 }
 
-//captures user ZIP code value on form
+//captures user ZIP code value on form and reset form
 function watchZip() {
   console.log("event handler ran!");
   $(".zip-code-form").on("submit", function(){
       event.preventDefault(); 
       const userZip = $("#zip-input").val(); 
       getSnapStores(userZip);
+      clearMarkers(markers);
     });
+
+  // $(".zip-code-form").on("")
 }
 
 //interact with the SNAP API to fetch data for the app 
@@ -126,7 +130,24 @@ function displaySnapStores(responseJson) {
 
   $(".snap-results").append(storeInfo);
   
+  $("#result-list a").each(function(i,e) {
+    $(e).click(function(i) {
+          return function(e) {
+            google.maps.event.trigger(markers[i], 'click');
+            map.setZoom(16);
+          }
+        }(i));
+    });
   };
+};
+
+
+//clear markers on each new search
+function clearMarkers() {
+  for (let i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  };
+  markers = [];
 }
 
 //displays results as markers on the map wth corresponding info.
@@ -163,15 +184,7 @@ function getMarkers(responseJson) {
           infowindow.open(map, marker);
           }
       })(marker, i));
-
-    $("#result-list ul").each(function(i,e) {
-        $(e).click(function(i) {
-            return function(e) {
-              google.maps.event.trigger(markers[i], 'click');
-            }
-          }(i));
-      });
-  };
+  }
   map.fitBounds(bounds);
 }
 
