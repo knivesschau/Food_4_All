@@ -110,20 +110,23 @@ function displaySnapStores(responseJson) {
   $(".snap-results").empty(); 
 
   for (let i = 0; i < responseJson.features.length; i++) {
-      $(".snap-results").append(
-          `
-          <ul id="grocery-list">
-          <li>
-          <a id="name">${responseJson.features[i].attributes.Store_Name}</a>
-          <p id="address-1">${responseJson.features[i].attributes.Address}</p>
-          
-          <p id="address-2">${responseJson.features[i].attributes.City}, 
-          ${responseJson.features[i].attributes.State}, 
-          ${responseJson.features[i].attributes.Zip5}</p>
-          
-          </li>
-          </ul>`)  
-    };
+
+  let storeInfo = 
+    `<ul>
+    <li>
+    <a class="name">${responseJson.features[i].attributes.Store_Name}</a>
+    <p>${responseJson.features[i].attributes.Address}</p>
+    
+    <p>${responseJson.features[i].attributes.City}, 
+    ${responseJson.features[i].attributes.State}, 
+    ${responseJson.features[i].attributes.Zip5}</p>
+    
+    </li>
+    </ul>`
+
+  $(".snap-results").append(storeInfo);
+  
+  };
 }
 
 //displays results as markers on the map wth corresponding info.
@@ -152,24 +155,24 @@ function getMarkers(responseJson) {
       });
     
     markers.push(marker);
-    bounds.extend(coordinates)
+    bounds.extend(coordinates);
     
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
           infowindow.setContent(info);
           infowindow.open(map, marker);
-          map.setZoom(15);
           }
-    })
-    (marker, i));
+      })(marker, i));
 
-    // $("#name").on('click', function(marker) {
-    //     map.setZoom(16);
-    //     google.maps.event.trigger(markers[i], 'click');
-    // });
-  }
+    $("#result-list ul").each(function(i,e) {
+        $(e).click(function(i) {
+            return function(e) {
+              google.maps.event.trigger(markers[i], 'click');
+            }
+          }(i));
+      });
+  };
   map.fitBounds(bounds);
-
 }
 
 //function to handle text appearance with scrolling on mobile.
