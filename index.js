@@ -94,9 +94,10 @@ function getSnapStores(userZip) {
       })
       .then(responseJson => {
         if (!responseJson.features.length) {
-          $("#error-msg").show(); 
+          $("#error-msg").fadeIn(); 
           } 
         else {  
+          $("#error-msg").hide();
           displaySnapStores(responseJson);
           getMarkers(responseJson);
           }
@@ -107,7 +108,7 @@ function getSnapStores(userZip) {
         }); 
 }
 
-//displays results client-side in list form.
+//displays results client-side in list form and makes them interactive
 function displaySnapStores(responseJson) {
   console.log(responseJson);
   $(".snap-results").removeClass("hidden");
@@ -188,24 +189,11 @@ function getMarkers(responseJson) {
   map.fitBounds(bounds);
 }
 
-//function to handle text appearance with scrolling on mobile.
-// function scrollContent() {
-//   $(window).scroll(function() {
-//     if (`${this}.scrollTop()` > 0) {
-//       $('').fadeOut();
-//     } 
-//     else {
-//       $('').fadeIn();
-//     }
-//   });
-// }
-
-//initialize event handlers for navigation and search on load
+//initialize event handler functions
 function initializeApp() {
   navigationListener(); 
   watchZip(); 
   openQuestions();
-  // scrollContent();
 }
 
 $(initializeApp);

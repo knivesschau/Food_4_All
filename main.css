@@ -12,6 +12,7 @@ html {
 
 /* Mobile-first, 320px min*/
 body {
+    height: 100%;
     background-image: url("https://user-images.githubusercontent.com/54642928/75304716-e0706b00-583b-11ea-99f7-41c7ef66ce82.jpg");
     background-repeat: no-repeat;
     background-size: 200% 100%;
@@ -27,15 +28,15 @@ h2, h3, h4 {
     font-family: 'Poppins';
 }
 
-p, a, span {
+p, span {
     font-family: 'Open Sans';
     font-size: 1rem;
 }
 
 a {
-    font-size: .90em;
+    font-family: 'Open Sans';
+    font-size: .90rem;
     cursor: pointer;
-    text-decoration: none;
 }
 
 ul {
@@ -73,10 +74,20 @@ footer {
     border: 1px solid white;
     border-radius: 1em;
     font-weight: bolder;
+    text-decoration: none;
 }
 
 #food-insecurity-link {
     margin-top: .75em;
+}
+
+#snap-link:hover, #food-insecurity-link:hover {
+    background: rgba(60, 146, 82, .8);
+    text-decoration: underline;
+}
+
+#snap-link:active, #food-insecurity-link:active {
+    background: #BDE8D9;
 }
 
 #zip-input, #submit-button {
@@ -91,9 +102,14 @@ footer {
 }
 
 #error-msg { 
+    font-family: 'Open Sans';
     display: none;
-    font-size: 2em;
-    color: darkred;
+    font-size: 1em;
+    background-color: rgba(185, 34, 1, .8);
+    color: white;
+    border: 1px solid white;
+    border-radius: 1em;
+    font-weight: boldest;
     margin-top: 0.5em;
 }
 
@@ -103,8 +119,7 @@ footer {
 
 #address1, #address2 {
     font-size: .80em;
-    line-height: 1em;
-    padding-bottom: .5em;
+    line-height: 0;
 }
 
 #grocery-list {
@@ -115,14 +130,28 @@ footer {
 #store-name {
     margin-top: .5em;
     font-size: .85em;
-    text-transform: capitalize;
+    margin-bottom: 1em;
 }
 
 #home-page-link1, #home-page-link2 {
     text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #B92201;
+    font-weight: bolder;
 }
 
- #food-insec1, #food-insec2 {
+#home-page-link1:hover, #home-page-link2:hover {
+    color: rgba(60, 146, 82, .8);
+    text-transform: uppercase; 
+    text-decoration: underline;
+} 
+
+#home-page-link1:active, #home-page-link2:active{
+    color: #BDE8D9;
+}
+
+#food-insec1, #food-insec2 {
     display: flex;
     flex-direction: column;
     align-content: space-around;
@@ -130,16 +159,33 @@ footer {
     font-size: 1rem;
     color: #26002e;
     font-weight: bolder;
+    text-decoration: none;
  }
 
- #answer-1, #answer-2, #acknowledgements {
+#food-insec1:hover, #snap-link2:hover, #feed-am-link:hover, #food-insec2:hover {
+    color:  #B92201;
+ }
+
+#food-insec1:active, #snap-link2:active, #feed-am-link:active, #food-insec2:active {
+    color: rgba(60, 146, 82);
+ }
+
+#acknowledgements {
      padding: .5em;
+     color: #26002e;
  }
 
- #answer-1, #answer-2 {
+#snap-link2, #feed-am-link {
+    text-decoration: none;
+}
+
+#answer-1, #answer-2 {
     background-color: rgba(254, 187, 63, .8);
     color: #ffffff;
     border-radius: 1em;
+    border-radius: 2.5em;
+    padding: 1.5em;
+    line-height: 1.5;
  }
 
 .landing-page {
@@ -152,13 +198,16 @@ footer {
 .snap-page {
     text-align: center;
     position: relative;
-    background-size: 200% 100%;
-    bottom: 1em;
+    bottom: 2.0em;
+    overflow-y: auto;
 }
 
 .zip-code-form {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
 .map-placeholder {
@@ -172,12 +221,27 @@ footer {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .snap-results {
     height: 300px;
     width: 300px;
     overflow-y: auto;
+}
+
+.name {
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.name:hover {
+    color: rgba(254, 187, 63);
+}
+
+.name:active {
+    color: #BDE8D9;
 }
 
 .home-nav-links {
@@ -190,96 +254,211 @@ footer {
 /* Medium smartphones */ 
 @media only screen and (min-width: 375px) {
 
-.snap-results {
-    width: 350px;
-}
+    .snap-results {
+        width: 350px;
+    }
 
-.map-placeholder {
-    width: 360px;
-}
+    .map-placeholder {
+        width: 360px;
+    }
 
-.zip-code-form {
-    justify-content: center;
-}
+    #app-name {
+        margin-top: 5em;
+    }
 
-#app-name {
-    margin-top: 4em;
-}
-
-} 
+    } 
 
 /* Large smartphones */
 @media only screen and (min-width: 414px) {
 
-.snap-results {
-    padding: 1.5em;
-}
+    .snap-results {
+        padding: 1.5em;
+    }
 
 }
 
 /* iPads and Tablets */
 @media only screen and (min-width: 768px) {
+    p, #zip-input, #submit-button {
+        font-size: 1.5rem;
+    }
+
+    ul {
+        margin-left: 2.0em;
+        margin-right: 2.0em;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .name {
+        font-size: 1.5rem;
+    }
+
+    #app-name {
+        font-size: 4rem;
+        margin-top: 3.5em;
+    }
+
+    #store-name, #address1, #address2 {
+        font-size: 1.0rem;
+    }
+
+    #app-descrip, #app-guider {
+        font-size: 2rem;
+    }
     
-body {
-    background-size: 110% 100%;
+    #error-msg {
+        font-size: 1.5rem;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+    #snap-link, #food-insecurity-link {
+        font-size: 2rem; 
+        margin-left: 2.0em;
+        margin-right: 2.0em;
+    }
+
+    #food-insec1, #food-insec2 {
+        font-size: 2rem;
+        margin-left: 1em;
+        margin-right: 1em;
+    }
+
+    #answer-1, #answer-2 {
+        margin-left: 1.5em;
+        margin-right: 1.5em;
+    }
+
+    #snap-link2, #feed-am-link {
+        font-size: 1.5rem;
+    }
+
+    #acknowledgements {
+        margin-left: 2.5em;
+        margin-right: 2.5em;
+    }
+
+    #search-descrip1, #search-descrip2 {
+        margin-left: 2.5em;
+        margin-right: 2.5em;
+    }
+
+    #home-page-link1, #home-page-link2 {
+        font-size: 1.5rem;
+    }
+
+    .map-placeholder {
+        height: 460px;
+        width: 700px;
+    }
+
+    .snap-results {
+        height: 500px;
+        width: 705px;
+    }
+
 }
 
-p, #zip-input, #submit-button {
-    font-size: 1.5rem;
-}
 
-h3 {
-    font-size: 2rem;
-}
-
-#app-name {
-    font-size: 4rem;
-    margin-top: 3.5em;
-}
-
-#app-descrip, #app-guider {
-    font-size: 2rem;
-}
-
-#snap-link, #food-insecurity-link {
-    font-size: 2rem; 
-    margin-left: 2.0em;
-    margin-right: 2.0em;
-}
-
-#food-insec1, #food-insec2 {
-    font-size: 2rem;
-}
-
-.data-container {
-    flex-direction: row-reverse;
-}
-
-.map-placeholder {
-    height: 465px;
-    width: 700px;
-}
-
-.snap-results {
-    height: 500px;
-    width: 450px;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-}
-
-
-/* Desktop */
+/* Laptops */
 @media only screen and (min-width: 1000px) {
+
+    body {
+        background-size: 100% 100%;
+        }
+
+    ul {
+        line-height: 1.0;
+    }
+
+    .map-placeholder {
+        margin-left: 1.0em;
+        margin-right: 1.0em; 
+        width: 950px;
+    }
+
+    .data-container {
+        flex-direction: row-reverse;
+    }
+
+    ul {
+        line-height: 1.0;
+    }
+
     #app-name {
         margin-top: 2em;
     }
+
+    #error-msg {
+        font-size: 2rem;
+        margin-left: 2em;
+        margin-right: 2em;
+    }
+
+
 }
 
+/* Small/Medium Monitors (Desktop) */
+@media only screen and (min-width: 1200px) {
+    
+    #app-name {
+        margin-top: 3em;
+    }
+    
+    #app-descrip {
+        margin-left: 2.5em;
+        margin-right: 2.5em;
+    }
 
-/* Larger Resolutions (Desktop) 
-@media only screen and (min-width: 1000px) {
+    #snap-link, #food-insecurity-link {
+        margin-left: 8em;
+        margin-right: 8em;
+    }
 
+    #acknowledgements {
+        margin-left: 6em;
+        margin-right: 6em;
+    }
+
+    #food-insec1, #food-insec2, #answer-1, #answer-2 {
+        margin-left: 4.5em;
+        margin-right: 4.5em;
+    }
+
+    .snap-page {
+        bottom: 4em;
+    }
+    
 }
-*/
+
+/* Larger Desktops */ 
+@media only screen and (min-width: 1300px) {
+    
+    #app-name {
+        margin-top: 2em;
+        font-size: 5rem;
+    }
+
+    #search-title-page {
+        font-size: 2.5rem;
+    }
+
+    #search-descrip1, #search-descrip2 {
+        margin-left: 5em;
+        margin-right: 5em;
+        font-size: 2rem;
+    }
+
+    .map-placeholder, .snap-results {
+        height: 650px;
+    }
+
+    .snap-results {
+        height: 650px;
+        margin-bottom: 2em;
+    }
+}
+    
