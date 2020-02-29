@@ -453,11 +453,12 @@ footer {
         height: 650px;
         margin-bottom: 2em;
     }
+
 }
 
 /* High Resolution */
 @media only screen and (min-width: 1500px) {
-    
+
     #acknowledgements {
         margin-left: 10em;
         margin-right: 10em;
