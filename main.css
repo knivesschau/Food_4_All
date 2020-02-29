@@ -1,5 +1,3 @@
-/* 1 em = 16px!!! */
-
 html {
     min-height: 100vh;
     margin: 0;
@@ -15,7 +13,7 @@ body {
     height: 100%;
     background-image: url("https://user-images.githubusercontent.com/54642928/75304716-e0706b00-583b-11ea-99f7-41c7ef66ce82.jpg");
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 145% 100%;
     background-attachment: fixed;
     background-position: center;
 }
@@ -90,15 +88,16 @@ footer {
     background: #BDE8D9;
 }
 
-#zip-input, #submit-button {
+#zip-input, .submit-button {
     height: 1.5em;
     width: 10em;
     font-size: 1em;
 }
 
-#submit-button {
+.submit-button {
     margin-left: .5em;
     margin-top: .10em;
+    border: none;
 }
 
 #error-msg { 
@@ -190,7 +189,7 @@ footer {
 
 .landing-page {
     text-align: center; 
-    overflow-y: hidden;
+    overflow: hidden;
     position: relative;
     bottom: 2.0em;
 }
@@ -199,7 +198,6 @@ footer {
     text-align: center;
     position: relative;
     bottom: 2.0em;
-    overflow-y: auto;
 }
 
 .zip-code-form {
@@ -279,7 +277,12 @@ footer {
 
 /* iPads and Tablets */
 @media only screen and (min-width: 768px) {
-    p, #zip-input, #submit-button {
+    
+    body {
+        background-size: 125% 100%;
+    }
+
+    p, #zip-input, .submit-button {
         font-size: 1.5rem;
     }
 
@@ -290,6 +293,7 @@ footer {
 
     h3 {
         font-size: 2rem;
+        padding-top: 1em;
     }
 
     .name {
@@ -315,21 +319,15 @@ footer {
         margin-right: 1em;
     }
 
-    #snap-link, #food-insecurity-link {
+    #snap-link, #food-insecurity-link, #food-insec1, #food-insec2 {
         font-size: 2rem; 
-        margin-left: 2.0em;
-        margin-right: 2.0em;
-    }
-
-    #food-insec1, #food-insec2 {
-        font-size: 2rem;
-        margin-left: 1em;
-        margin-right: 1em;
+        margin-left: 2em;
+        margin-right: 2em;
     }
 
     #answer-1, #answer-2 {
-        margin-left: 1.5em;
-        margin-right: 1.5em;
+        margin-left: 2em;
+        margin-right: 2em;
     }
 
     #snap-link2, #feed-am-link {
@@ -337,8 +335,8 @@ footer {
     }
 
     #acknowledgements {
-        margin-left: 2.5em;
-        margin-right: 2.5em;
+        margin-left: 3em;
+        margin-right: 3em;
     }
 
     #search-descrip1, #search-descrip2 {
@@ -367,11 +365,15 @@ footer {
 @media only screen and (min-width: 1000px) {
 
     body {
-        background-size: 100% 100%;
-        }
+        background-size: 105% 100%;
+    }
 
     ul {
         line-height: 1.0;
+    }
+
+    #app-name {
+        margin-top: 3em;
     }
 
     .map-placeholder {
@@ -388,10 +390,6 @@ footer {
         line-height: 1.0;
     }
 
-    #app-name {
-        margin-top: 2em;
-    }
-
     #error-msg {
         font-size: 2rem;
         margin-left: 2em;
@@ -404,23 +402,20 @@ footer {
 /* Small/Medium Monitors (Desktop) */
 @media only screen and (min-width: 1200px) {
     
-    #app-name {
-        margin-top: 3em;
-    }
-    
     #app-descrip {
         margin-left: 2.5em;
         margin-right: 2.5em;
     }
 
     #snap-link, #food-insecurity-link {
-        margin-left: 8em;
-        margin-right: 8em;
+        margin-left: 10em;
+        margin-right: 10em;
     }
 
     #acknowledgements {
         margin-left: 6em;
         margin-right: 6em;
+        font-size: 1.75rem;
     }
 
     #food-insec1, #food-insec2, #answer-1, #answer-2 {
@@ -438,7 +433,6 @@ footer {
 @media only screen and (min-width: 1300px) {
     
     #app-name {
-        margin-top: 2em;
         font-size: 5rem;
     }
 
@@ -461,4 +455,18 @@ footer {
         margin-bottom: 2em;
     }
 }
+
+/* High Resolution */
+@media only screen and (min-width: 1500px) {
     
+    #acknowledgements {
+        margin-left: 10em;
+        margin-right: 10em;
+        text-align: justify;
+    }
+
+    #food-insec1, #food-insec2, #answer-1, #answer-2 {
+        margin-left: 8em;
+        margin-right: 8em;
+    }
+}

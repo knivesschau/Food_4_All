@@ -61,7 +61,7 @@ function getQuerys(parameters) {
 
 // captures user ZIP code value on form and reset form
 function watchZip() {
-  $(".zip-code-form").on("submit", function(){
+  $(".zip-code-form").on("click", "#submit", function(){
       event.preventDefault(); 
       const userZip = $("#zip-input").val(); 
       getSnapStores(userZip);
