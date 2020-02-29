@@ -7,7 +7,6 @@ let map;
 let markers = [];
 
 function initMap() {
-  console.log("ran!");
   map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 37.0902, lng: -95.7129},
       scrollwheel: false,
@@ -18,7 +17,7 @@ function initMap() {
     
 } 
 
-//navigate through the app with these event listeners
+// navigate through the app with these event listeners
 function navigationListener() {
   $("#snap-link").on('click', function(event) {
       $(".snap-page").fadeIn().removeClass("hidden"); 
@@ -52,7 +51,7 @@ function openQuestions() {
   })
 }
 
-//convert search parameters from the SNAP API into URI components
+// convert search parameters from the SNAP API into URI components
 function getQuerys(parameters) {
   const snapData = Object.keys(parameters).map(key => {
       return `${encodeURIComponent(key)}=${encodeURIComponent(parameters[key])}`
@@ -60,9 +59,8 @@ function getQuerys(parameters) {
   return snapData.join("&");
 }
 
-//captures user ZIP code value on form and reset form
+// captures user ZIP code value on form and reset form
 function watchZip() {
-  console.log("event handler ran!");
   $(".zip-code-form").on("submit", function(){
       event.preventDefault(); 
       const userZip = $("#zip-input").val(); 
@@ -73,7 +71,7 @@ function watchZip() {
   // $(".zip-code-form").on("")
 }
 
-//interact with the SNAP API to fetch data for the app 
+// interact with the SNAP API to fetch data for the app 
 function getSnapStores(userZip) {
   const parameters = {
     where: `UPPER(Zip5) like '%${userZip}%'`,
@@ -108,9 +106,8 @@ function getSnapStores(userZip) {
         }); 
 }
 
-//displays results client-side in list form and makes them interactive
+// displays results client-side in list form and makes store names interactive
 function displaySnapStores(responseJson) {
-  console.log(responseJson);
   $(".snap-results").removeClass("hidden");
   $(".snap-results").empty(); 
 
@@ -143,7 +140,7 @@ function displaySnapStores(responseJson) {
 };
 
 
-//clear markers on each new search
+// clear markers on each new search
 function clearMarkers() {
   for (let i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -151,10 +148,8 @@ function clearMarkers() {
   markers = [];
 }
 
-//displays results as markers on the map wth corresponding info.
+// displays results as markers on the map wth corresponding info.
 function getMarkers(responseJson) {
-    console.log("getMarkers ran!");
-
     let bounds = new google.maps.LatLngBounds(); 
     let infowindow = new google.maps.InfoWindow();
 
@@ -189,7 +184,7 @@ function getMarkers(responseJson) {
   map.fitBounds(bounds);
 }
 
-//initialize event handler functions
+// initialize event handler functions
 function initializeApp() {
   navigationListener(); 
   watchZip(); 
