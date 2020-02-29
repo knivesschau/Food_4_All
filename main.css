@@ -13,7 +13,7 @@ body {
     height: 100%;
     background-image: url("https://user-images.githubusercontent.com/54642928/75304716-e0706b00-583b-11ea-99f7-41c7ef66ce82.jpg");
     background-repeat: no-repeat;
-    background-size: 200% 100%;
+    background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
@@ -278,10 +278,6 @@ footer {
 
 /* iPads and Tablets */
 @media only screen and (min-width: 768px) {
-    
-    body {
-        background-size: 125% 100%;
-    }
 
     p, #zip-input, .submit-button {
         font-size: 1.5rem;
@@ -312,6 +308,10 @@ footer {
 
     #app-descrip, #app-guider {
         font-size: 2rem;
+    }
+
+    #app-descrip {
+        margin-bottom: -1.0em;
     }
     
     #error-msg {
@@ -365,16 +365,13 @@ footer {
 /* Laptops */
 @media only screen and (min-width: 1000px) {
 
-    body {
-        background-size: 105% 100%;
-    }
-
     ul {
         line-height: 1.0;
     }
 
     #app-name {
         margin-top: 3em;
+        margin-bottom: .25em;
     }
 
     .map-placeholder {
@@ -403,9 +400,14 @@ footer {
 /* Small/Medium Monitors (Desktop) */
 @media only screen and (min-width: 1200px) {
     
+    #app-name {
+        font-size: 5rem; 
+    }
+
     #app-descrip {
         margin-left: 2.5em;
         margin-right: 2.5em;
+        margin-bottom: -.5em;
     }
 
     #snap-link, #food-insecurity-link {
