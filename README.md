@@ -1,7 +1,7 @@
 # Food 4 All
 
 # Summary 
-Food 4 All is an application that allows users to search for grocers and food retailers that accept SNAP benefits across the United States. It's mission is to bring awareness to the issue of food insecurity, a problem that millions of American citizens face on a daily basis. Users can also learn about what food insecurity is, and how to reach out to external resources if they are in need. 
+Food 4 All is an application that allows users to search for grocers and food retailers that accept SNAP benefits across the United States. Its mission is to bring awareness to the issue of food insecurity, a problem that millions of American citizens face on a daily basis. Users can also learn about what food insecurity is, and how to reach out to external resources if they are in need. 
 
 # Live Demo 
 <a href="https://knivesschau.github.io/Food_4_All">Live Demo</a>
